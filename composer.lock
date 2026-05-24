@@ -438,7 +438,7 @@
         },
         {
             "name": "botble/get-started",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/get-started",
@@ -464,7 +464,7 @@
         },
         {
             "name": "botble/installer",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/installer",
@@ -493,7 +493,7 @@
         },
         {
             "name": "botble/menu",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/menu",
@@ -526,7 +526,7 @@
         },
         {
             "name": "botble/optimize",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/optimize",
@@ -558,7 +558,7 @@
         },
         {
             "name": "botble/page",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/page",
@@ -588,7 +588,7 @@
         },
         {
             "name": "botble/platform",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/core",
@@ -697,7 +697,7 @@
         },
         {
             "name": "botble/plugin-management",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/plugin-management",
@@ -726,7 +726,7 @@
         },
         {
             "name": "botble/revision",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/revision",
@@ -755,7 +755,7 @@
         },
         {
             "name": "botble/seo-helper",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/seo-helper",
@@ -788,7 +788,7 @@
         },
         {
             "name": "botble/shortcode",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/shortcode",
@@ -820,7 +820,7 @@
         },
         {
             "name": "botble/sitemap",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/sitemap",
@@ -849,7 +849,7 @@
         },
         {
             "name": "botble/slug",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/slug",
@@ -881,7 +881,7 @@
         },
         {
             "name": "botble/theme",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/theme",
@@ -922,7 +922,7 @@
         },
         {
             "name": "botble/widget",
-            "version": "dev-main",
+            "version": "dev-changes",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/widget",
@@ -7113,16 +7113,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v7.3.11",
+            "version": "v7.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "e3e76b9ba0dff3dfe08ebda500723976dd9de407"
+                "reference": "902d621e0b6ef0ebeaa133770b5c339a19328589"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/e3e76b9ba0dff3dfe08ebda500723976dd9de407",
-                "reference": "e3e76b9ba0dff3dfe08ebda500723976dd9de407",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/902d621e0b6ef0ebeaa133770b5c339a19328589",
+                "reference": "902d621e0b6ef0ebeaa133770b5c339a19328589",
                 "shasum": ""
             },
             "require": {
@@ -7130,12 +7130,14 @@
                 "psr/cache": "^2.0|^3.0",
                 "psr/log": "^1.1|^2|^3",
                 "symfony/cache-contracts": "^3.6",
-                "symfony/deprecation-contracts": "^2.5|^3.0",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/var-exporter": "^6.4|^7.0"
+                "symfony/var-exporter": "^6.4|^7.0|^8.0"
             },
             "conflict": {
                 "doctrine/dbal": "<3.6",
+                "ext-redis": "<6.1",
+                "ext-relay": "<0.12.1",
                 "symfony/dependency-injection": "<6.4",
                 "symfony/http-kernel": "<6.4",
                 "symfony/var-dumper": "<6.4"
@@ -7150,13 +7152,13 @@
                 "doctrine/dbal": "^3.6|^4",
                 "predis/predis": "^1.1|^2.0",
                 "psr/simple-cache": "^1.0|^2.0|^3.0",
-                "symfony/clock": "^6.4|^7.0",
-                "symfony/config": "^6.4|^7.0",
-                "symfony/dependency-injection": "^6.4|^7.0",
-                "symfony/filesystem": "^6.4|^7.0",
-                "symfony/http-kernel": "^6.4|^7.0",
-                "symfony/messenger": "^6.4|^7.0",
-                "symfony/var-dumper": "^6.4|^7.0"
+                "symfony/clock": "^6.4|^7.0|^8.0",
+                "symfony/config": "^6.4|^7.0|^8.0",
+                "symfony/dependency-injection": "^6.4|^7.0|^8.0",
+                "symfony/filesystem": "^6.4|^7.0|^8.0",
+                "symfony/http-kernel": "^6.4|^7.0|^8.0",
+                "symfony/messenger": "^6.4|^7.0|^8.0",
+                "symfony/var-dumper": "^6.4|^7.0|^8.0"
             },
             "type": "library",
             "autoload": {
@@ -7191,7 +7193,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v7.3.11"
+                "source": "https://github.com/symfony/cache/tree/v7.4.12"
             },
             "funding": [
                 {
@@ -7211,7 +7213,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-27T16:12:03+00:00"
+            "time": "2026-05-20T07:20:23+00:00"
         },
         {
             "name": "symfony/cache-contracts",
