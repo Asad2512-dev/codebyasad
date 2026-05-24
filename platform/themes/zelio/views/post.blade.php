@@ -2,6 +2,9 @@
     Theme::set('pageTitle', $post->name);
 @endphp
 
+<!-- Highlight.js Stylesheet for Code Blocks -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+
 <section @class(['section-details pb-100', 'pt-80' => get_header_style() != 2, 'pt-160' => get_header_style() == 2])>
     <div class="container">
         <div class="row">
@@ -92,3 +95,39 @@
         </div>
     </section>
 @endif
+
+<!-- Highlight.js and Custom Code Buttons Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Init Syntax Highlighting
+        hljs.highlightAll();
+
+        // Create Copy Buttons for Code Pre Blocks
+        document.querySelectorAll('.ck-content pre').forEach((preBlock) => {
+            // Check if it has a code child
+            const codeBlock = preBlock.querySelector('code');
+            if (!codeBlock) return;
+
+            preBlock.style.position = 'relative';
+
+            // Create button
+            const button = document.createElement('button');
+            button.className = 'btn btn-sm btn-dark position-absolute top-0 end-0 m-2';
+            button.style.fontSize = '10px';
+            button.innerText = 'COPY';
+
+            // Add click listener
+            button.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                    button.innerText = 'COPIED!';
+                    setTimeout(() => {
+                        button.innerText = 'COPY';
+                    }, 2000);
+                });
+            });
+
+            preBlock.appendChild(button);
+        });
+    });
+</script>
