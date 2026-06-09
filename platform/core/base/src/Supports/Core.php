@@ -193,11 +193,13 @@ final class Core
             'verify_type' => $this->productSource,
         ]);
 
-        if ($response->failed()) {
-            throw new LicenseInvalidException('Could not activate your license. Please try again later.');
-        }
-
         $data = $response->json();
+
+        if ($response->failed()) {
+            throw new LicenseInvalidException(
+                Arr::get($data, 'message') ?: 'Could not activate your license. Please try again later.'
+            );
+        }
 
         if (! Arr::get($data, 'status')) {
             $message = Arr::get($data, 'message');
