@@ -8,6 +8,12 @@ use Botble\Base\Forms\FieldOptions\TextFieldOption;
 use Botble\Base\Forms\Fields\CoreIconField;
 use Botble\Base\Forms\Fields\SelectField;
 use Botble\Base\Forms\Fields\TextField;
+use Botble\Base\Forms\Fields\TextareaField;
+use Botble\Base\Forms\Fields\EditorField;
+use Botble\Base\Forms\Fields\MediaImagesField;
+use Botble\Base\Forms\FieldOptions\TextareaFieldOption;
+use Botble\Base\Forms\FieldOptions\ContentFieldOption;
+use Botble\Base\Forms\FieldOptions\MediaImagesFieldOption;
 use Botble\LanguageAdvanced\Supports\LanguageAdvancedManager;
 use Botble\Media\Facades\RvMedia;
 use Botble\Portfolio\Forms\Fronts\QuotationForm;
@@ -155,6 +161,112 @@ app()->booted(function (): void {
                     TextFieldOption::make()
                         ->label(__('GitHub repository URL'))
                         ->helperText(__('Leave empty if not available. e.g: https://github.com/...'))
+                        ->metadata()
+                )
+                ->addAfter(
+                    'github_url',
+                    'app_store_url',
+                    TextField::class,
+                    TextFieldOption::make()
+                        ->label(__('App Store URL'))
+                        ->metadata()
+                )
+                ->addAfter(
+                    'app_store_url',
+                    'play_store_url',
+                    TextField::class,
+                    TextFieldOption::make()
+                        ->label(__('Play Store URL'))
+                        ->metadata()
+                )
+                ->addAfter(
+                    'play_store_url',
+                    'demo_video_url',
+                    TextField::class,
+                    TextFieldOption::make()
+                        ->label(__('Demo Video URL'))
+                        ->metadata()
+                )
+                ->addAfter(
+                    'content',
+                    'case_study_role',
+                    TextField::class,
+                    TextFieldOption::make()
+                        ->label(__('Case Study Role'))
+                        ->helperText(__('e.g. Full Stack Developer, Mobile App Developer'))
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_role',
+                    'case_study_tech_stack',
+                    TextField::class,
+                    TextFieldOption::make()
+                        ->label(__('Case Study Tech Stack'))
+                        ->helperText(__('Comma-separated values, e.g. Flutter, Dart, Firebase'))
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_tech_stack',
+                    'case_study_overview',
+                    TextareaField::class,
+                    TextareaFieldOption::make()
+                        ->label(__('Case Study Overview'))
+                        ->rows(4)
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_overview',
+                    'case_study_problem',
+                    TextareaField::class,
+                    TextareaFieldOption::make()
+                        ->label(__('Case Study Problem'))
+                        ->rows(4)
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_problem',
+                    'case_study_goals',
+                    TextareaField::class,
+                    TextareaFieldOption::make()
+                        ->label(__('Case Study Goals'))
+                        ->helperText(__('Enter one goal per line'))
+                        ->rows(4)
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_goals',
+                    'case_study_solution',
+                    EditorField::class,
+                    ContentFieldOption::make()
+                        ->label(__('Case Study Solution & Implementation'))
+                        ->allowedShortcodes()
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_solution',
+                    'case_study_features',
+                    TextareaField::class,
+                    TextareaFieldOption::make()
+                        ->label(__('Case Study Features'))
+                        ->helperText(__('Enter one feature per line'))
+                        ->rows(4)
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_features',
+                    'case_study_outcome',
+                    TextareaField::class,
+                    TextareaFieldOption::make()
+                        ->label(__('Case Study Results & Outcome'))
+                        ->rows(4)
+                        ->metadata()
+                )
+                ->addAfter(
+                    'case_study_outcome',
+                    'screenshots_gallery',
+                    MediaImagesField::class,
+                    MediaImagesFieldOption::make()
+                        ->label(__('Screenshots / Gallery'))
                         ->metadata()
                 );
         });

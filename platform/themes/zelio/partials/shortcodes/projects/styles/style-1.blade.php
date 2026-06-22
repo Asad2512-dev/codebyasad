@@ -1,3 +1,17 @@
+@php
+    $techStacks = [
+        5 => ['Flutter', 'Dart', 'Firebase', 'GetX'],
+        6 => ['Flutter', 'Dart', 'Custom Drawing', 'GetX'],
+        7 => ['Flutter', 'Dart', 'Firebase', 'GetX'],
+        8 => ['Flutter', 'Dart', 'Firebase', 'GetX'],
+        9 => ['Flutter', 'Dart', 'GetX', 'Firebase', 'Node.js'],
+        10 => ['Flutter', 'Dart', 'GetX', 'REST APIs'],
+        11 => ['Flutter', 'Dart', 'Firebase', 'GetX'],
+        12 => ['Flutter', 'Dart', 'Urdu TTS', 'Multi-Window'],
+        13 => ['Flutter', 'Dart', 'GetX', 'Node.js', 'MongoDB']
+    ];
+@endphp
+
 <div id="projects" class="section-projects-1 position-relative pt-120 pb-6 bg-900">
     <div class="container">
         <div class="row align-items-end">
@@ -51,11 +65,29 @@
                         @endif
                         <div class="d-flex align-items-center mt-4">
                             <a href="{{ $project->url }}" class="project-card-content">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge text-dark text-uppercase fw-bold px-2 py-1" style="font-size: 0.65rem; letter-spacing: 0.05em; border-radius: 4px; background: var(--primary-color, #00cf8a) !important; color: #121212 !important;">{{ __('Case Study') }}</span>
+                                </div>
                                 <h3 class="fw-semibold">
                                     {!! BaseHelper::clean($project->name) !!}
                                 </h3>
                                 @if($project->client)
-                                    <p>{{ $project->client }}</p>
+                                    <p class="mb-1 text-muted">{{ $project->client }}</p>
+                                @endif
+                                @php
+                                    $projectTechRaw = $project->getMetaData('case_study_tech_stack', true);
+                                    if (!empty($projectTechRaw)) {
+                                        $projectTech = array_filter(array_map('trim', explode(',', $projectTechRaw)));
+                                    } else {
+                                        $projectTech = $techStacks[$project->id] ?? [];
+                                    }
+                                @endphp
+                                @if(!empty($projectTech))
+                                    <div class="mt-2">
+                                        @foreach($projectTech as $tech)
+                                            <span class="badge me-1 mb-1 px-2 py-1" style="font-size: 0.75rem; font-weight: normal; background: rgba(0,0,0,0.05) !important; border: 1px solid rgba(0,0,0,0.08); color: #555 !important;">{{ $tech }}</span>
+                                        @endforeach
+                                    </div>
                                 @endif
                             </a>
                             <a href="{{ $project->url }}" title="{{ $project->name }}" class="project-card-icon icon-shape ms-auto icon-md rounded-circle">
