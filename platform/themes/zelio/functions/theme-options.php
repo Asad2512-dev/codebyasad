@@ -9,6 +9,14 @@ use Botble\Theme\ThemeOption\Fields\TextField;
 use Botble\Theme\ThemeOption\Fields\UiSelectorField;
 use Botble\Theme\ThemeOption\ThemeOptionSection;
 
+class MediaFileField extends \Botble\Theme\ThemeOption\ThemeOptionField
+{
+    public function fieldType(): string
+    {
+        return 'mediaFile';
+    }
+}
+
 app('events')->listen(RenderingThemeOptionSettings::class, function (): void {
     theme_option()
         ->setField(
@@ -158,5 +166,12 @@ app('events')->listen(RenderingThemeOptionSettings::class, function (): void {
                 ->sectionId('opt-text-subsection-page')
                 ->name('404_page_image')
                 ->label(__('404 page image'))
+        )
+        ->setField(
+            MediaFileField::make()
+                ->sectionId('opt-text-subsection-general')
+                ->name('cv_file')
+                ->label(__('CV / Resume File'))
+                ->helperText(__('Upload your CV / Resume file (PDF, Doc, etc.).'))
         );
 });

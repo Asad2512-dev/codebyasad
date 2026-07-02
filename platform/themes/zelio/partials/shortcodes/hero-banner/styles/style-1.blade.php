@@ -26,7 +26,11 @@
                     <p class="text-300 mb-6">{!! BaseHelper::clean($shortcode->description) !!}</p>
                 @endif
                 @if($shortcode->primary_button_text)
-                    <a href="{{ $shortcode->primary_button_link }}" class="btn btn-gradient me-2"  @if (($shortcode->open_primary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
+                    @php
+                        $isCv = Str::contains(strtolower($shortcode->primary_button_text), 'cv') || Str::contains(strtolower($shortcode->primary_button_text), 'resume') || Str::endsWith(strtolower($shortcode->primary_button_link), ['.pdf', '.doc', '.docx']);
+                        $buttonLink = $isCv && theme_option('cv_file') ? RvMedia::url(theme_option('cv_file')) : $shortcode->primary_button_link;
+                    @endphp
+                    <a href="{{ $buttonLink }}" class="btn btn-gradient me-2" @if($isCv) download @elseif (($shortcode->open_primary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
                         {!! BaseHelper::clean($shortcode->primary_button_text) !!}
                         @if($shortcode->primary_button_icon)
                             <x-core::icon :name="$shortcode->primary_button_icon" class="ms-2" />
@@ -34,7 +38,11 @@
                     </a>
                 @endif
                 @if($shortcode->secondary_button_text)
-                    <a href="{{ $shortcode->secondary_button_link }}" class="btn btn-outline-secondary d-inline-flex align-items-center" @if (($shortcode->open_secondary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
+                    @php
+                        $isCvSec = Str::contains(strtolower($shortcode->secondary_button_text), 'cv') || Str::contains(strtolower($shortcode->secondary_button_text), 'resume') || Str::endsWith(strtolower($shortcode->secondary_button_link), ['.pdf', '.doc', '.docx']);
+                        $secButtonLink = $isCvSec && theme_option('cv_file') ? RvMedia::url(theme_option('cv_file')) : $shortcode->secondary_button_link;
+                    @endphp
+                    <a href="{{ $secButtonLink }}" class="btn btn-outline-secondary d-inline-flex align-items-center" @if($isCvSec) download @elseif (($shortcode->open_secondary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
                         <span>{!! BaseHelper::clean($shortcode->secondary_button_text) !!}</span>
                         @if($shortcode->secondary_button_icon)
                             <x-core::icon :name="$shortcode->secondary_button_icon" class="ms-2" />

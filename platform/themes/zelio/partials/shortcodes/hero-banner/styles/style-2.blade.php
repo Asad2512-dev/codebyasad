@@ -59,7 +59,11 @@
                                 </div>
                             </div>
                             @if($shortcode->primary_button_text)
-                                <a href="{{ $shortcode->primary_button_link }}" class="btn me-2 text-300 ps-0 mt-4"  @if (($shortcode->open_primary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
+                                @php
+                                    $isCv = Str::contains(strtolower($shortcode->primary_button_text), 'cv') || Str::contains(strtolower($shortcode->primary_button_text), 'resume') || Str::endsWith(strtolower($shortcode->primary_button_link), ['.pdf', '.doc', '.docx']);
+                                    $buttonLink = $isCv && theme_option('cv_file') ? RvMedia::url(theme_option('cv_file')) : $shortcode->primary_button_link;
+                                @endphp
+                                <a href="{{ $buttonLink }}" class="btn me-2 text-300 ps-0 mt-4" @if($isCv) download @elseif (($shortcode->open_primary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
                                     @if($shortcode->primary_button_icon)
                                         <x-core::icon :name="$shortcode->primary_button_icon" class="text-primary-2" />
                                     @endif
@@ -67,7 +71,11 @@
                                 </a>
                             @endif
                             @if($shortcode->secondary_button_text)
-                                <a href="{{ $shortcode->secondary_button_link }}" class="btn me-2 text-300 ps-0 mt-4"  @if (($shortcode->open_secondary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
+                                @php
+                                    $isCvSec = Str::contains(strtolower($shortcode->secondary_button_text), 'cv') || Str::contains(strtolower($shortcode->secondary_button_text), 'resume') || Str::endsWith(strtolower($shortcode->secondary_button_link), ['.pdf', '.doc', '.docx']);
+                                    $secButtonLink = $isCvSec && theme_option('cv_file') ? RvMedia::url(theme_option('cv_file')) : $shortcode->secondary_button_link;
+                                @endphp
+                                <a href="{{ $secButtonLink }}" class="btn me-2 text-300 ps-0 mt-4" @if($isCvSec) download @elseif (($shortcode->open_secondary_link_in_the_new_tab ?? 'yes') == 'yes') target="_blank" @endif>
                                     @if($shortcode->secondary_button_icon)
                                         <x-core::icon :name="$shortcode->secondary_button_icon" class="text-secondary-2" />
                                     @endif
