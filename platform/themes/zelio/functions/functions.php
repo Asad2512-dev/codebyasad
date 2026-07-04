@@ -272,13 +272,22 @@ app()->booted(function (): void {
         });
 
         ServiceForm::extend(function (ServiceForm $form): void {
-            $form->add(
-                'icon',
-                CoreIconField::class,
-                CoreIconFieldOption::make()
-                    ->label(__('Icon'))
-                    ->metadata()
-            );
+            $form
+                ->add(
+                    'icon',
+                    CoreIconField::class,
+                    CoreIconFieldOption::make()
+                        ->label(__('Icon'))
+                        ->metadata()
+                )
+                ->add(
+                    'price',
+                    TextField::class,
+                    TextFieldOption::make()
+                        ->label(__('Price'))
+                        ->placeholder(__('e.g. $50/hr or $500/project'))
+                        ->metadata()
+                );
         });
 
         PackageForm::extend(function (PackageForm $form): void {

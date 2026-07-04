@@ -33,6 +33,11 @@
                                         @if($service->description)
                                             <p class="fs-7 text-300 fw-regular">{!! BaseHelper::clean(nl2br($service->description)) !!}</p>
                                         @endif
+                                        @if ($price = $service->getMetaData('price', true))
+                                            <div class="mt-3">
+                                                <span class="text-primary-2 fw-semibold fs-7">{{ $price }}</span>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach

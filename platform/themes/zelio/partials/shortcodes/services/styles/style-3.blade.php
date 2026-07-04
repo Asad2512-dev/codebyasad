@@ -18,11 +18,14 @@
                         </svg>
                     </div>
                 </div>
-                <div class="card__content px-md-4 px-3">
-                    <div class="card__title mb-0 mb-lg-2">
+                <div class="card__content px-md-4 px-3 flex-grow-1">
+                    <div class="card__title mb-0 mb-lg-2 d-flex justify-content-between align-items-center">
                         <a href="{{ $service->url }}">
-                            <p class="fs-4 text-dark">{!! BaseHelper::clean($service->name) !!}</p>
+                            <p class="fs-4 text-dark mb-0">{!! BaseHelper::clean($service->name) !!}</p>
                         </a>
+                        @if ($price = $service->getMetaData('price', true))
+                            <span class="text-primary-3 fw-semibold fs-5">{{ $price }}</span>
+                        @endif
                     </div>
                     @if($service->description)
                         <p class="text-300 mb-lg-auto mb-md-4 mb-3">

@@ -7,8 +7,13 @@
                         <div class="card-custom" data-index="0">
                             <div class="card__inner bg-6 px-md-5 py-md-6 px-3 py-4">
                                 <div class="card__title d-flex align-items-center mb-md-4 mb-3">
-                                    <a href="{{ $service->url }}" class="card_title_link">
-                                        <h3 class="fw-semibold mb-2">{{ $service->name }}</h3>
+                                    <a href="{{ $service->url }}" class="card_title_link flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h3 class="fw-semibold mb-0">{{ $service->name }}</h3>
+                                            @if ($price = $service->getMetaData('price', true))
+                                                <span class="btn btn-outline-secondary btn-sm text-nowrap">{{ $price }}</span>
+                                            @endif
+                                        </div>
                                         <p class="mb-0">{!! BaseHelper::clean($service->description) !!}</p>
                                     </a>
                                     <a href="{{ $service->url }}" class="card-icon border text-dark border-dark icon-shape ms-auto icon-md rounded-circle">

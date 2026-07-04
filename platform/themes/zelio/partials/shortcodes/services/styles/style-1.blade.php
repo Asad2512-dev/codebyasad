@@ -45,6 +45,9 @@
                                         {!! BaseHelper::clean(nl2br($service->description)) !!}
                                     </p>
                                 @endif
+                                @if ($price = $service->getMetaData('price', true))
+                                    <span class="btn btn-outline-secondary btn-sm ms-3 text-nowrap my-3">{{ $price }}</span>
+                                @endif
                                 <div class="service-card-icon icon-shape ms-auto icon-md rounded-circle border">
                                     <i class="ri-arrow-right-up-line"></i>
                                 </div>
