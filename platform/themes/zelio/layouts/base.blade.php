@@ -30,5 +30,10 @@
         {!! Theme::partial('footer') !!}
 
         {!! Theme::footer() !!}
+
+        @if (BaseHelper::isHomepage())
+            <!-- Zanderio AI Widget Integration -->
+            <script src="https://cdn.zanderio.ai/widget/loader.js" data-id="wdg_FfBOACYuQjTUwKqvkqs9tg1B" defer></script>
+        @endif
     </body>
 </html>
